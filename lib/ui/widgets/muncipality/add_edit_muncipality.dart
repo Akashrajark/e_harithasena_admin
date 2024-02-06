@@ -4,40 +4,41 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../util/value_validators.dart';
 import '../../../values/colors.dart';
 import '../custom_alert_dialog.dart';
+import '../custom_select_box.dart';
 
-class AddEditRegionDialog extends StatefulWidget {
-  final Map<String, dynamic>? regionDetails;
-  final Function(Map<String, dynamic> region)? onAdd;
-  final Function(Map<String, dynamic> region, int regionId)? onEdit;
-  const AddEditRegionDialog({
+class AddEditMuncipality extends StatefulWidget {
+  final Map<String, dynamic>? staffTypeDetails;
+  final Function(Map<String, dynamic> staffType)? onAdd;
+  final Function(Map<String, dynamic> staffType, int staffTypeId)? onEdit;
+  const AddEditMuncipality({
     super.key,
-    this.regionDetails,
+    this.staffTypeDetails,
     this.onAdd,
     this.onEdit,
   });
 
   @override
-  State<AddEditRegionDialog> createState() => _AddEditRegionDialogState();
+  State<AddEditMuncipality> createState() => _AddEditMuncipalityState();
 }
 
-class _AddEditRegionDialogState extends State<AddEditRegionDialog> {
+class _AddEditMuncipalityState extends State<AddEditMuncipality> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    if (widget.regionDetails != null) {
-      _nameController.text = widget.regionDetails!['name'];
-      _descriptionController.text = widget.regionDetails!['description'];
+    if (widget.staffTypeDetails != null) {
+      _nameController.text = widget.staffTypeDetails!['name'];
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return CustomAlertDialog(
-      title: widget.regionDetails != null ? 'EDIT REGION' : 'ADD REGION',
+      title: widget.staffTypeDetails != null
+          ? 'EDIT MUNCIPALITY TYPE'
+          : 'ADD MUNCIPALITY TYPE',
       content: Padding(
         padding: const EdgeInsets.only(
           top: 15,
@@ -60,16 +61,11 @@ class _AddEditRegionDialogState extends State<AddEditRegionDialog> {
                 ),
               ),
               const SizedBox(height: 10),
-              TextFormField(
-                controller: _nameController,
-                validator: alphanumericWithSpecialCharsValidator,
-                decoration: const InputDecoration(
-                  hintText: 'Enter Name',
-                ),
-              ),
+              CustomSelectBox(
+                  items: [], label: "test", onChange: (onChange) {}),
               const SizedBox(height: 10),
               Text(
-                'DESCRIPTION',
+                'MUNCIPALITY/PANCHAYATH',
                 style: GoogleFonts.montserrat(
                   textStyle: Theme.of(context).textTheme.labelSmall?.copyWith(
                         fontWeight: FontWeight.w600,
@@ -79,13 +75,13 @@ class _AddEditRegionDialogState extends State<AddEditRegionDialog> {
               ),
               const SizedBox(height: 10),
               TextFormField(
-                controller: _descriptionController,
+                controller: _nameController,
                 validator: alphanumericWithSpecialCharsValidator,
-                maxLines: 2,
                 decoration: const InputDecoration(
-                  hintText: 'Enter Description',
+                  hintText: 'Enter muncipality/panchayathu',
                 ),
               ),
+              const SizedBox(height: 10),
             ],
           ),
         ),
@@ -93,18 +89,16 @@ class _AddEditRegionDialogState extends State<AddEditRegionDialog> {
       primaryButton: 'SAVE',
       onPrimaryPressed: () {
         if (formKey.currentState!.validate()) {
-          if (widget.regionDetails != null) {
+          if (widget.staffTypeDetails != null) {
             //edit
             widget.onEdit!({
               'name': _nameController.text.trim(),
-              'description': _descriptionController.text.trim(),
-            }, widget.regionDetails!['id']);
+            }, widget.staffTypeDetails!['id']);
             Navigator.pop(context);
           } else {
             //add
             widget.onAdd!({
               'name': _nameController.text.trim(),
-              'description': _descriptionController.text.trim(),
             });
             Navigator.pop(context);
           }

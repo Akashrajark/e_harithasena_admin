@@ -67,6 +67,33 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 },
                 isSelected: widget.tabController.index == 2,
               ),
+              const SizedBox(height: 10),
+              DrawerButton(
+                label: 'District',
+                iconData: Icons.place,
+                onPressed: () {
+                  changeIndex(3);
+                },
+                isSelected: widget.tabController.index == 3,
+              ),
+              const SizedBox(height: 10),
+              DrawerButton(
+                label: 'Muncipality',
+                iconData: Icons.location_city,
+                onPressed: () {
+                  changeIndex(4);
+                },
+                isSelected: widget.tabController.index == 4,
+              ),
+              const SizedBox(height: 10),
+              DrawerButton(
+                label: 'Ward',
+                iconData: Icons.holiday_village,
+                onPressed: () {
+                  changeIndex(5);
+                },
+                isSelected: widget.tabController.index == 5,
+              ),
             ],
           ),
         ),

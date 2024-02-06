@@ -1,20 +1,20 @@
-import 'package:e_harithasena_admin/ui/widgets/custom_action_button.dart';
-import 'package:e_harithasena_admin/ui/widgets/worker_section/add_edit_delete.dart';
-import 'package:e_harithasena_admin/ui/widgets/worker_section/custom_worker_datatable.dart';
+import 'package:e_harithasena_admin/ui/widgets/dristict/add_edit_district.dart';
+import 'package:e_harithasena_admin/ui/widgets/dristict/custom_district_table.dart';
 import 'package:flutter/material.dart';
 
 import '../../../values/colors.dart';
+import '../../widgets/custom_action_button.dart';
 import '../../widgets/width_bound.dart';
 
-class WorkerSection extends StatefulWidget {
+class DistrictSection extends StatefulWidget {
   final TabController tabController;
-  const WorkerSection({super.key, required this.tabController});
+  const DistrictSection({super.key, required this.tabController});
 
   @override
-  State<WorkerSection> createState() => _WorkerSectionState();
+  State<DistrictSection> createState() => _DistrictSectionState();
 }
 
-class _WorkerSectionState extends State<WorkerSection> {
+class _DistrictSectionState extends State<DistrictSection> {
   bool paginated = false;
 
   @override
@@ -28,7 +28,7 @@ class _WorkerSectionState extends State<WorkerSection> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Workers',
+                  'District',
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 IconButton(
@@ -41,12 +41,9 @@ class _WorkerSectionState extends State<WorkerSection> {
                 const Spacer(),
                 CustomActionButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AddEditDelet(),
-                      ),
-                    );
+                    showDialog(
+                        context: context,
+                        builder: (context) => AddEditDistrict());
                   },
                   label: "Add Worker",
                   iconData: Icons.add,
@@ -54,10 +51,9 @@ class _WorkerSectionState extends State<WorkerSection> {
                 )
               ],
             ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: CustomWorkersDataTable(),
-            )
+            const Expanded(
+              child: CustomDistrictTable(),
+            ),
           ],
         ),
       ),

@@ -1,20 +1,22 @@
-import 'package:e_harithasena_admin/ui/widgets/custom_action_button.dart';
-import 'package:e_harithasena_admin/ui/widgets/worker_section/add_edit_delete.dart';
-import 'package:e_harithasena_admin/ui/widgets/worker_section/custom_worker_datatable.dart';
+import 'package:e_harithasena_admin/ui/widgets/ward/add_edit_ward.dart';
+import 'package:e_harithasena_admin/ui/widgets/ward/custom_ward_table.dart';
 import 'package:flutter/material.dart';
 
 import '../../../values/colors.dart';
+import '../../widgets/custom_action_button.dart';
+import '../../widgets/muncipality/add_edit_muncipality.dart';
 import '../../widgets/width_bound.dart';
+import '../../widgets/worker_section/custom_worker_datatable.dart';
 
-class WorkerSection extends StatefulWidget {
+class WardSection extends StatefulWidget {
   final TabController tabController;
-  const WorkerSection({super.key, required this.tabController});
+  const WardSection({super.key, required this.tabController});
 
   @override
-  State<WorkerSection> createState() => _WorkerSectionState();
+  State<WardSection> createState() => _WardSectionState();
 }
 
-class _WorkerSectionState extends State<WorkerSection> {
+class _WardSectionState extends State<WardSection> {
   bool paginated = false;
 
   @override
@@ -28,7 +30,7 @@ class _WorkerSectionState extends State<WorkerSection> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Workers',
+                  'Ward',
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 IconButton(
@@ -41,12 +43,8 @@ class _WorkerSectionState extends State<WorkerSection> {
                 const Spacer(),
                 CustomActionButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AddEditDelet(),
-                      ),
-                    );
+                    showDialog(
+                        context: context, builder: (context) => AddEditWard());
                   },
                   label: "Add Worker",
                   iconData: Icons.add,
@@ -54,9 +52,8 @@ class _WorkerSectionState extends State<WorkerSection> {
                 )
               ],
             ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: CustomWorkersDataTable(),
+            const Expanded(
+              child: CustomWardTable(),
             )
           ],
         ),
