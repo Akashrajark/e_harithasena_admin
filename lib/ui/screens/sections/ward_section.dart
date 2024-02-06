@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../values/colors.dart';
 import '../../widgets/custom_action_button.dart';
-import '../../widgets/muncipality/add_edit_muncipality.dart';
 import '../../widgets/width_bound.dart';
-import '../../widgets/worker_section/custom_worker_datatable.dart';
 
 class WardSection extends StatefulWidget {
   final TabController tabController;

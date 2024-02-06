@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../../values/colors.dart';
 import '../../widgets/dashboard/dashboard_item.dart';
 import '../../widgets/width_bound.dart';
-import '../../widgets/worker_section/custom_worker_datatable.dart';
 
 class DashboardSection extends StatefulWidget {
   final TabController tabController;

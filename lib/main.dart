@@ -1,9 +1,15 @@
-import 'package:e_harithasena_admin/ui/screens/home_screen.dart';
+import 'package:e_harithasena_admin/firebase_options.dart';
+import 'package:e_harithasena_admin/ui/screens/login_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'ui/theme/app_theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -16,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Kokkadan ERP Admin',
       theme: appTheme,
-      home: const HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
