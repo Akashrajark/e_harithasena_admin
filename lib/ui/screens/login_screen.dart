@@ -1,3 +1,4 @@
+import 'package:e_harithasena_admin/ui/widgets/branding.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -89,13 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Center(
-                              child: Container(
-                                height: 30,
-                                width: 30,
-                                color: Colors.grey,
-                              ),
-                            ),
+                            const Branding(),
                             const SizedBox(height: 25),
                             Text(
                               'LOGIN',

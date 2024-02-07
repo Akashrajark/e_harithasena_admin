@@ -1,3 +1,4 @@
+import 'package:e_harithasena_admin/ui/screens/sections/dashboard_section.dart';
 import 'package:e_harithasena_admin/ui/widgets/customer_section/custom_customer_datatable.dart';
 import 'package:flutter/material.dart';
 
@@ -38,8 +39,10 @@ class _CustomerSectionState extends State<CustomerSection> {
                 ),
               ],
             ),
-            const Expanded(
-              child: CustomCustomersDataTable(),
+            Expanded(
+              child: CustomCustomersDataTable(
+                text: dataList,
+              ),
             )
           ],
         ),

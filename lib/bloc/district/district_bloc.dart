@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
@@ -16,9 +15,12 @@ class DistrictBloc extends Bloc<MainDistrictEvent, DistrictState> {
       (event, emit) {
         try {
           emit(DistrictLoadingState());
-          FirebaseFirestore.instance.collection("District").doc().set({
-            "District": event.district["district"],
-            "id": event.districtId.v4(),
+          FirebaseFirestore.instance
+              .collection("districts")
+              .doc(event.district["district"])
+              .set({
+            "name": event.district["district"],
+            "id": event.districtId.v1(),
           });
           emit(DistrictSuccessState());
         } catch (e, s) {
@@ -31,16 +33,31 @@ class DistrictBloc extends Bloc<MainDistrictEvent, DistrictState> {
         }
       },
     );
-    on<DistrictGetEvent>((event, emit) async {
+    on<DistrictDeleteEvent>((event, emit) {
       try {
         emit(DistrictLoadingState());
-        var data =
-            await FirebaseFirestore.instance.collection("District").get();
-        List<dynamic> temp = [];
-        data.docs.forEach((doc) {
-          temp.add(doc['district']);
-        });
-        emit(DistrictGetSuccessState(districtList: temp));
+        // FirebaseFirestore.instance
+        //     .collection("districts").doc().delete();
+        var collection = FirebaseFirestore.instance.collection('districts');
+        collection.doc(event.id).delete();
+        emit(DistrictSuccessState());
+      } catch (e, s) {
+        Logger().e('$e\n$s');
+        if (e is FirebaseException) {
+          emit(DistrictFailureState(message: e.message.toString()));
+        } else {
+          emit(DistrictFailureState(message: e.toString()));
+        }
+      }
+    });
+    on<DistrictEditEvent>((event, emit) {
+      try {
+        emit(DistrictLoadingState());
+        // FirebaseFirestore.instance
+        //     .collection("districts").doc().delete();
+        var collection = FirebaseFirestore.instance.collection('districts');
+        collection.doc(event.id).update({"name": event.id});
+        emit(DistrictSuccessState());
       } catch (e, s) {
         Logger().e('$e\n$s');
         if (e is FirebaseException) {

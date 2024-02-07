@@ -56,11 +56,76 @@ class _WorkerSectionState extends State<WorkerSection> {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: CustomWorkersDataTable(),
-            )
+              child: CustomWorkersDataTable(
+                text: indianCitizens,
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
+List<Map<String, String>> indianCitizens = [
+  {
+    'name': 'Rajesh Kumar',
+    'email': 'rajesh.kumar@example.com',
+    'phone': '+919876543210',
+    'address': '123, Main Street, Connaught Place',
+  },
+  {
+    'name': 'Priya Sharma',
+    'email': 'priya.sharma@example.com',
+    'phone': '+918765432109',
+    'address': '456, South Avenue, Bandra',
+  },
+  {
+    'name': 'Amit Patel',
+    'email': 'amit.patel@example.com',
+    'phone': '+917654321098',
+    'address': '789, Gandhi Road, Maninagar',
+  },
+  {
+    'name': 'Sneha Reddy',
+    'email': 'sneha.reddy@example.com',
+    'phone': '+919876543210',
+    'address': '321, Hill View Apartments, Hi-Tech City',
+  },
+  {
+    'name': 'Vikram Singh',
+    'email': 'vikram.singh@example.com',
+    'phone': '+918765432109',
+    'address': '567, Teachers Colony, Malviya Nagar',
+  },
+  {
+    'name': 'Neha Gupta',
+    'email': 'neha.gupta@example.com',
+    'phone': '+917654321098',
+    'address': '890, Park Avenue, Koregaon Park',
+  },
+  {
+    'name': 'Sanjay Mishra',
+    'email': 'sanjay.mishra@example.com',
+    'phone': '+919876543210',
+    'address': '234, Lake Road, Salt Lake City',
+  },
+  {
+    'name': 'Anjali Joshi',
+    'email': 'anjali.joshi@example.com',
+    'phone': '+918765432109',
+    'address': '678, Fashion Street, Mylapore',
+  },
+  {
+    'name': 'Rajesh Singhania',
+    'email': 'rajesh.singhania@example.com',
+    'phone': '+917654321098',
+    'address': '345, Startup Avenue, Koramangala',
+  },
+  {
+    'name': 'Nisha Sharma',
+    'email': 'nisha.sharma@example.com',
+    'phone': '+919876543210',
+    'address': '901, Press Enclave, Hazratganj',
+  },
+];

@@ -3,8 +3,10 @@ import 'package:e_harithasena_admin/ui/widgets/custom_action_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomWorkersDataTable extends StatelessWidget {
+  final List<Map<String, dynamic>> text;
   const CustomWorkersDataTable({
     super.key,
+    required this.text,
   });
 
   @override
@@ -29,20 +31,20 @@ class CustomWorkersDataTable extends StatelessWidget {
         ),
       ],
       rows: List.generate(
-        10,
+        text.length,
         (index) => DataRow(
           cells: [
             DataCell(
-              Text("xjfnj"),
+              Text(text[index]["name"]),
             ),
             DataCell(
-              Text("xjfnj"),
+              Text(text[index]["address"]),
             ),
             DataCell(
-              Text("xjfnj"),
+              Text(text[index]["phone"]),
             ),
             DataCell(
-              Text("xjfnjfjjjj"),
+              Text(text[index]["email"]),
             ),
             DataCell(Row(
               mainAxisAlignment: MainAxisAlignment.end,

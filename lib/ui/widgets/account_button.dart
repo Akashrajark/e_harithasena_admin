@@ -1,3 +1,5 @@
+import 'package:e_harithasena_admin/ui/screens/login_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../values/colors.dart';
@@ -32,7 +34,16 @@ class AccountButton extends StatelessWidget {
                   title: 'LOGOUT?',
                   description: 'Are you sure you want to logout?',
                   primaryButton: 'LOGOUT',
-                  onPrimaryPressed: () {},
+                  onPrimaryPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => LoginScreen(),
+                      ),
+                      (route) => false,
+                    );
+                  },
                   secondaryButton: 'NO',
                 ),
               );

@@ -9,4 +9,14 @@ class DistrictEvent extends MainDistrictEvent {
   DistrictEvent({required this.district});
 }
 
-class DistrictGetEvent extends MainDistrictEvent {}
+class DistrictDeleteEvent extends MainDistrictEvent {
+  final String id;
+
+  DistrictDeleteEvent({required this.id});
+}
+
+class DistrictEditEvent extends MainDistrictEvent {
+  final String id, name;
+
+  DistrictEditEvent({required this.name, required this.id});
+}

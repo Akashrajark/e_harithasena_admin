@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Branding extends StatelessWidget {
   final double height;
@@ -10,11 +11,10 @@ class Branding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        height: height,
-        width: height,
-        color: Colors.grey,
-      ),
-    );
+        child: Text(
+      "E_HARITHASENA",
+      style: GoogleFonts.poppins(
+          textStyle: Theme.of(context).textTheme.headlineSmall),
+    ));
   }
 }

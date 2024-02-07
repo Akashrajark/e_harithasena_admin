@@ -107,3 +107,56 @@ class _AddEditMuncipalityState extends State<AddEditMuncipality> {
     );
   }
 }
+
+List<Map<String, String>> municipalitiesInKerala = [
+  {
+    'name': 'Thiruvananthapuram',
+    'description':
+        'The capital city of Kerala, known for its rich cultural heritage and historical landmarks.'
+  },
+  {
+    'name': 'Kochi',
+    'description':
+        'A major port city known for its backwaters, spice markets, and colonial architecture.'
+  },
+  {
+    'name': 'Kozhikode',
+    'description':
+        'Historically significant city known for its beaches, museums, and ancient temples.'
+  },
+  {
+    'name': 'Kollam',
+    'description':
+        'Famous for its Ashtamudi Lake, cashew processing industry, and historic temples.'
+  },
+  {
+    'name': 'Thrissur',
+    'description':
+        'Cultural capital of Kerala, known for its vibrant festivals, art, and traditional architecture.'
+  },
+  {
+    'name': 'Alappuzha',
+    'description':
+        'Renowned for its picturesque backwaters, houseboat cruises, and annual Nehru Trophy Boat Race.'
+  },
+  {
+    'name': 'Kannur',
+    'description':
+        'Known for its pristine beaches, handloom industry, and historical monuments.'
+  },
+  {
+    'name': 'Palakkad',
+    'description':
+        'Nicknamed as the "Granary of Kerala", famous for its fertile land, dams, and wildlife sanctuaries.'
+  },
+  {
+    'name': 'Malappuram',
+    'description':
+        'Known for its rich cultural diversity, mosques, and historical significance.'
+  },
+  {
+    'name': 'Pathanamthitta',
+    'description':
+        'Famous for its religious sites, especially the Sabarimala Temple, and scenic beauty.'
+  },
+];

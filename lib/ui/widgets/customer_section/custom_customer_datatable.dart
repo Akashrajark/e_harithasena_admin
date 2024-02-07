@@ -2,8 +2,10 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 
 class CustomCustomersDataTable extends StatelessWidget {
+  final List<Map<String, dynamic>> text;
   const CustomCustomersDataTable({
     super.key,
+    required this.text,
   });
 
   @override
@@ -29,23 +31,23 @@ class CustomCustomersDataTable extends StatelessWidget {
         ),
       ],
       rows: List.generate(
-        10,
+        text.length,
         (index) => DataRow(
           cells: [
             DataCell(
-              Text("xjfnj"),
+              Text(text[index]["name"]),
             ),
             DataCell(
-              Text("xjfnj"),
+              Text(text[index]["email"]),
             ),
             DataCell(
-              Text("xjfnj"),
+              Text(text[index]["address"]),
             ),
             DataCell(
-              Text("xjfnjfjjjj"),
+              Text(text[index]["point"]),
             ),
             DataCell(
-              Text("xjfnjfjjjj"),
+              Text(text[index]["reschedule"]),
             ),
           ],
         ),

@@ -50,8 +50,10 @@ class _WardSectionState extends State<WardSection> {
                 )
               ],
             ),
-            const Expanded(
-              child: CustomWardTable(),
+            Expanded(
+              child: CustomWardTable(
+                text: wards,
+              ),
             )
           ],
         ),
@@ -59,3 +61,51 @@ class _WardSectionState extends State<WardSection> {
     );
   }
 }
+
+List<Map<String, String>> wards = [
+  {
+    'ward_no': 'Ward 1',
+    'description':
+        'Residential area with well-developed infrastructure and parks.'
+  },
+  {
+    'ward_no': 'Ward 2',
+    'description':
+        'Commercial hub with shopping centers and business establishments.'
+  },
+  {
+    'ward_no': 'Ward 3',
+    'description': 'Educational district with schools, colleges, and libraries.'
+  },
+  {
+    'ward_no': 'Ward 4',
+    'description': 'Cultural center with theaters, museums, and art galleries.'
+  },
+  {
+    'ward_no': 'Ward 5',
+    'description': 'Industrial zone with factories and manufacturing units.'
+  },
+  {
+    'ward_no': 'Ward 6',
+    'description':
+        'Medical district with hospitals, clinics, and health centers.'
+  },
+  {
+    'ward_no': 'Ward 7',
+    'description': 'Recreational area with sports facilities and playgrounds.'
+  },
+  {
+    'ward_no': 'Ward 8',
+    'description': 'Historical district with heritage sites and monuments.'
+  },
+  {
+    'ward_no': 'Ward 9',
+    'description':
+        'Green zone with gardens, forests, and environmental projects.'
+  },
+  {
+    'ward_no': 'Ward 10',
+    'description':
+        'Residential area with mixed demographics and community facilities.'
+  },
+];

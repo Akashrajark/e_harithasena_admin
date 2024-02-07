@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_harithasena_admin/bloc/district/district_bloc.dart';
 import 'package:e_harithasena_admin/ui/widgets/dristict/add_edit_district.dart';
 import 'package:e_harithasena_admin/ui/widgets/dristict/custom_district_table.dart';
@@ -21,13 +22,8 @@ class _DistrictSectionState extends State<DistrictSection> {
   bool paginated = false;
   DistrictBloc districtBloc = DistrictBloc();
 
-  void getDistrict() {
-    districtBloc.add(DistrictGetEvent());
-  }
-
   @override
   void initState() {
-    getDistrict();
     super.initState();
   }
 
@@ -49,8 +45,6 @@ class _DistrictSectionState extends State<DistrictSection> {
                     primaryButton: 'OK',
                   ),
                 );
-              } else if (state is DistrictSuccessState) {
-                getDistrict();
               }
             },
             builder: (context, state) {
@@ -88,11 +82,36 @@ class _DistrictSectionState extends State<DistrictSection> {
                       )
                     ],
                   ),
-                  Expanded(
-                    child: CustomDistrictTable(
-                      text: state,
-                    ),
-                  ),
+                  StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection("districts")
+                        .snapshots(),
+                    builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return CircularProgressIndicator();
+                      } else if (snapshot.hasError) {
+                        return Text("${snapshot.error}");
+                      } else if (snapshot.data!.docs.isEmpty) {
+                        return Text("No Data");
+                      } else {
+                        // Extract district names from QuerySnapshot
+                        List<Map<String, dynamic>> districtNames =
+                            snapshot.data!.docs.map((doc) {
+                          return {
+                            'name': doc[
+                                'name'], // assuming 'name' is the field containing district name
+                            // Add other fields if needed
+                          };
+                        }).toList();
+
+                        return Expanded(
+                          child: CustomDistrictTable(
+                            text: districtNames,
+                          ),
+                        );
+                      }
+                    },
+                  )
                 ],
               );
             },

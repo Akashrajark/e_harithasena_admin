@@ -3,8 +3,10 @@ import 'package:e_harithasena_admin/ui/widgets/custom_action_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomMuncipalityTable extends StatelessWidget {
+  final List<Map<String, dynamic>> text;
   const CustomMuncipalityTable({
     super.key,
+    required this.text,
   });
 
   @override
@@ -22,14 +24,14 @@ class CustomMuncipalityTable extends StatelessWidget {
         ),
       ],
       rows: List.generate(
-        10,
+        text.length,
         (index) => DataRow(
           cells: [
             DataCell(
-              Text("xjfnj"),
+              Text(text[index]["name"]),
             ),
             DataCell(
-              Text("xjfnj"),
+              Text(text[index]["description"]),
             ),
             DataCell(Row(
               mainAxisAlignment: MainAxisAlignment.end,

@@ -51,8 +51,10 @@ class _MuncipalitySectionState extends State<MuncipalitySection> {
                 )
               ],
             ),
-            const Expanded(
-              child: CustomMuncipalityTable(),
+            Expanded(
+              child: CustomMuncipalityTable(
+                text: municipalitiesInKerala,
+              ),
             )
           ],
         ),
