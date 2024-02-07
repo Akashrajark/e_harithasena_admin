@@ -3,8 +3,10 @@ import 'package:e_harithasena_admin/ui/widgets/custom_action_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomDistrictTable extends StatelessWidget {
+  final List<dynamic> text;
   const CustomDistrictTable({
     super.key,
+    required this.text,
   });
 
   @override
@@ -15,21 +17,15 @@ class CustomDistrictTable extends StatelessWidget {
           label: Text("Name"),
         ),
         DataColumn2(
-          label: Text("Description"),
-        ),
-        DataColumn2(
           label: Text(""),
         ),
       ],
       rows: List.generate(
-        10,
+        text.length,
         (index) => DataRow(
           cells: [
             DataCell(
-              Text("xjfnj"),
-            ),
-            DataCell(
-              Text("xjfnj"),
+              Text(text[index]),
             ),
             DataCell(Row(
               mainAxisAlignment: MainAxisAlignment.end,

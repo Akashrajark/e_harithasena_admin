@@ -78,13 +78,13 @@ class _AddEditDistrictState extends State<AddEditDistrict> {
           if (widget.staffTypeDetails != null) {
             //edit
             widget.onEdit!({
-              'name': _nameController.text.trim(),
+              'district': _nameController.text.trim(),
             }, widget.staffTypeDetails!['id']);
             Navigator.pop(context);
           } else {
             //add
             widget.onAdd!({
-              'name': _nameController.text.trim(),
+              'district': _nameController.text.trim(),
             });
             Navigator.pop(context);
           }
